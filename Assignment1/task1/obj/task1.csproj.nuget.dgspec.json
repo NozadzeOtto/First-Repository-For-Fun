@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ONozadze\\source\\repos\\Assignment1\\task1\\task1.csproj": {}
+    "C:\\Users\\ONozadze\\Source\\Repos\\First-Repository-For-Fun\\Assignment1\\task1\\task1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ONozadze\\source\\repos\\Assignment1\\task1\\task1.csproj": {
+    "C:\\Users\\ONozadze\\Source\\Repos\\First-Repository-For-Fun\\Assignment1\\task1\\task1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ONozadze\\source\\repos\\Assignment1\\task1\\task1.csproj",
+        "projectUniqueName": "C:\\Users\\ONozadze\\Source\\Repos\\First-Repository-For-Fun\\Assignment1\\task1\\task1.csproj",
         "projectName": "task1",
-        "projectPath": "C:\\Users\\ONozadze\\source\\repos\\Assignment1\\task1\\task1.csproj",
+        "projectPath": "C:\\Users\\ONozadze\\Source\\Repos\\First-Repository-For-Fun\\Assignment1\\task1\\task1.csproj",
         "packagesPath": "C:\\Users\\ONozadze\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ONozadze\\source\\repos\\Assignment1\\task1\\obj\\",
+        "outputPath": "C:\\Users\\ONozadze\\Source\\Repos\\First-Repository-For-Fun\\Assignment1\\task1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ONozadze\\AppData\\Roaming\\NuGet\\NuGet.Config",
