@@ -6,11 +6,9 @@
         string input = Console.ReadLine();
         int number = int.Parse(input);
 
-        for (int i = 2; i < number; i++)
+        for (int i = 1; i <= number; i++)
         {
-            if (number % i == 0) { Console.WriteLine("=" + i + "*" + number / i + " - shedgenili"); return; }
+            if (number % i == 0) { Console.WriteLine(i); }
         }
-
-        Console.WriteLine("martivi");
     }
 }
