@@ -11,8 +11,8 @@
 
         Console.WriteLine("sheiyvanet " + size + " elementi: ");
         for (int i = 0; i < arrayString.Length; i++) arrayString[i] = Console.ReadLine();
-        
-        
+
+
         //second array
         Console.WriteLine("sheiyvanet meore masivis zoma: ");
         int size2 = int.Parse(Console.ReadLine());
@@ -23,11 +23,11 @@
 
         int biggerIndex = size > size2 ? size : size2;
 
-        string[] resultArray = new string[biggerIndex*2];
+        string[] resultArray = new string[biggerIndex * 2];
         for (int i = 0; i < biggerIndex; i++)
         {
-            if(i<arrayString.Length)resultArray[i*2] = arrayString[i];
-            if(i<arrayInt.Length)resultArray[i*2 + 1] = arrayInt[i].ToString();
+            if (i < arrayString.Length) resultArray[i * 2] = arrayString[i];
+            if (i < arrayInt.Length) resultArray[i * 2 + 1] = arrayInt[i].ToString();
         }
 
 
