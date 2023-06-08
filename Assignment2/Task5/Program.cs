@@ -4,19 +4,20 @@ while (play)
 {
     int countAnswers = 0;
     Boolean incorrect = true;
-    Console.WriteLine("Sheiyvanet diapazonis sawyisi: ");
+    Console.WriteLine("Min: ");
     int startRange = int.Parse(Console.ReadLine());
-    Console.WriteLine("Sheiyvanet diapazonis bolo: ");
+    Console.WriteLine("Max: ");
     int endRange = int.Parse(Console.ReadLine());
 
     Random rand = new Random();
-    int randomNumber = rand.Next(startRange, endRange);
+    int randomNumber = rand.Next(startRange, endRange + 1);
 
     Console.WriteLine("programam airchia rcxvi diapazonishi, ecade gamoicno!");
     while (incorrect)
     {
         countAnswers++;
         int guessInput = int.Parse(Console.ReadLine());
+        countAnswers++;
         if (guessInput == randomNumber) incorrect = false;
     }
 
