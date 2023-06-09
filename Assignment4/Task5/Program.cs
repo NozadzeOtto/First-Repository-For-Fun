@@ -20,7 +20,7 @@
             for (int j = 0; j < array.GetLength(1); j++)
             {
 
-                Console.WriteLine($"[{i}.{j}]: ");
+                Console.WriteLine($"[{i}][{j}]: ");
                 array[i, j] = int.Parse(Console.ReadLine());
             }
         }
@@ -31,7 +31,6 @@
         {
             for (int j = 0; j < array.GetLength(1); j++)
             {
-
                 printMatrix += $"{array[i, j]} ";
             }
             printMatrix += "\n";
