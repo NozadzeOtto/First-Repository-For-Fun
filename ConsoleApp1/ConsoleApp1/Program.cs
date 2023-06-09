@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿// array
+using System.Diagnostics.CodeAnalysis;
 
 Console.WriteLine("sheiyvanet meore masivis zoma: ");
 int size = int.Parse(Console.ReadLine());
@@ -11,10 +12,10 @@ string resultDemo = "";
 int countDemo = 0;
 string result = "";
 int count = 0;
-for (int i = 0; i < arrayInt.Length; i++)
+for(int i = 0; i < arrayInt.Length; i++)
 {
-
-    if (i < arrayInt.Length)
+    
+    if(i < arrayInt.Length)
     {
         if (i == 0) resultDemo += arrayInt[i] + ", ";
         else
