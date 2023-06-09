@@ -31,7 +31,6 @@
         {
             for (int j = 0; j < array.GetLength(1); j++)
             {
-
                 printMatrix += $"{array[i, j]} ";
             }
             printMatrix += "\n";
