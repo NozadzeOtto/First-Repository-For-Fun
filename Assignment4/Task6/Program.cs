@@ -22,7 +22,6 @@ while (incorrect) {
 
     if (matrixOneRow != matrixTwoCol) { Console.WriteLine("matricebis gamravleba sheudzlebelia\n"); }
     else { incorrect = false;}
-    Console.WriteLine("\n");
 }
 
 int[,] matrix1 = new int[matrixOneCol, matrixOneRow];
@@ -43,6 +42,9 @@ for (int i = 0; i < matrix1.GetLength(0); i++)
     }
 }
 
+
+Console.WriteLine("\n");
+
 // fill second matrix
 Console.WriteLine("shieyvanet meore matricis elementebi:");
 for (int i = 0; i < matrix2.GetLength(0); i++)
@@ -55,6 +57,8 @@ for (int i = 0; i < matrix2.GetLength(0); i++)
     }
 }
 
+Console.WriteLine("\n");
+
 // print matrix
 for (int i = 0; i < matrix1.GetLength(0); i++)
 {
@@ -64,7 +68,7 @@ for (int i = 0; i < matrix1.GetLength(0); i++)
     }
     printMatrix += "\n";
 }
-Console.WriteLine(printMatrix);
+Console.WriteLine(printMatrix + "  *");
 printMatrix = "";
 
 // print matrix
@@ -76,7 +80,7 @@ for (int i = 0; i < matrix2.GetLength(0); i++)
     }
     printMatrix += "\n";
 }
-Console.WriteLine(printMatrix);
+Console.WriteLine(printMatrix + "  =");
 printMatrix = "";
 
 // multiply matrixes
