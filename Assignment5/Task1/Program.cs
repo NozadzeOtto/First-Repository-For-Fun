@@ -29,7 +29,7 @@ int arrayIndexItemSum(int[] arr, int index)
     return sumedValue;
 }
 
-// gets Length of the Number : 567 -> 3
+// gets Length of the number : 000 -> 3
 int getLength(int number)
 {
     int length = 0;
