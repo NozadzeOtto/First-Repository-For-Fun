@@ -2,29 +2,26 @@
 int index = 1;
 Console.WriteLine(arrayIndexItemSum(array, index));
 
-
-
-
 // sums number's items
 int arrayIndexItemSum(int[] arr, int index)
 {
     int sumedValue = 0;
     //tempVariable = Math.Abs(arr[index]);
     int tempVariable = arr[index];
-    if (arr[index] < 0) tempVariable *= -1;
+    if (tempVariable < 0) tempVariable *= -1;
     
     int divide = 1;
     for (int i = 1; i < getLength(tempVariable); i++){
         divide *= 10;
     }
-    Console.WriteLine($" =  {divide}");
+    //Console.WriteLine($"divide  =  {divide}");
 
     // sum items
     while (divide > 0)
     {
         sumedValue += tempVariable / divide;
         tempVariable %= divide;
-        divide /= 10; ;
+        divide /= 10;
     }
     return sumedValue;
 }
@@ -36,7 +33,7 @@ int getLength(int number)
     while (number > 0)
     {
         number /= 10;
-        Console.WriteLine(number);
+        //Console.WriteLine(number);
         length++;
     }
     return length;
