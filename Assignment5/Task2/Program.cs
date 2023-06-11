@@ -4,10 +4,10 @@
     {
         char[] array = fillArray();
 
-        Console.WriteLine("\nInputed Array :");
+        Console.Write("\nInputed Array : ");
         foreach (char i in array) Console.Write("{0}, ", i);
 
-        printResult(array, 'a');
+        findCharInArray(array, 'a');
 
         // fills array with console
         char[] fillArray()
@@ -18,7 +18,7 @@
             Console.WriteLine("Input characters: ");
             for (int i = 0; i < array.Length; i++)
             {
-                Console.WriteLine($"[{i}]:");
+                Console.Write($"[{i}]:");
                 array[i] = Convert.ToChar(Console.ReadLine());
             }
             return array;
@@ -29,13 +29,14 @@
         {
             int count = 0;
             foreach (char j in arr) if (j == elm) count++;
+            printResult(elm, count);
             return count;
         }
 
         // prints how many times Char is found in array
-        void printResult(char[] array, char element)
+        void printResult(char element, int count)
         {
-            Console.WriteLine($"\n\n'{element}' can find in array {findCharInArray(array, element)} times");
+            Console.WriteLine($"\n\nWe found {element} {count} times in the array");
         }
     }
 }
