@@ -33,7 +33,7 @@ int getLength(int number)
     while (number > 0)
     {
         number /= 10;
-        //Console.WriteLine(number);
+        //Console.Write(number + " ");
         length++;
     }
     return length;
