@@ -14,6 +14,7 @@
         {
             Console.WriteLine("Input array length: ");
             int length = int.Parse(Console.ReadLine());
+            if (length <= 0) { Console.WriteLine("Length must be grater than 0!"); }
             char[] array = new char[length];
             Console.WriteLine("Input characters: ");
             for (int i = 0; i < array.Length; i++)
