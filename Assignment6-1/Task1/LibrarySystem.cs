@@ -13,42 +13,46 @@
 
     public class Lybrary
     {
-        private Book[] books;
+        private Book[] lybrary;
         
+        // Adds Book element to lybrary
         public void AddBooks(Book[] book) 
         {
-            books = book;
+            lybrary = book;
         }
 
-        //removes element and replaces with next
+        // replaces with new empty element
         public void RemoveBook(int index)
         {
-            //books[index] = null;
-            for (int i = index; i < books.Length; i++)
-            { 
-                if (i == books.Length - 1) { books[i] = null; return; }
-                books[i] = books[++i];
-            }
+            lybrary[index] = new Book();
+            //for (int i = index; i < books.Length; i++)
+            //{
+            //    if (i == books.Length - 1) { books[i] = new Book(); return; }
+            //    books[i] = books[++i];
+            //}
         }
 
+        // finds with title
         public int FindBook(string title)
         {
-            for (int i = 0; i < books.Length; i++)
+            for (int i = 0; i < lybrary.Length; i++)
             {
-                if (title == books[i].Title) return i;
+                if (title == lybrary[i].Title) return i;
             }
             return -1;
         }
 
+        // indexer
         public Book this[int i]
         {
-            get { return books[i]; }
-            set { books[i] = value; }
+            get { return lybrary[i]; }
+            set { lybrary[i] = value; }
         }
 
+        // counts length
         public int count
         {
-            get { return books.Length;}
+            get { return lybrary.Length;}
         }
 
     }
