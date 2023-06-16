@@ -24,12 +24,12 @@
         // replaces with new empty element
         public void RemoveBook(int index)
         {
-            lybrary[index] = new Book();
-            //for (int i = index; i < books.Length; i++)
-            //{
-            //    if (i == books.Length - 1) { books[i] = new Book(); return; }
-            //    books[i] = books[++i];
-            //}
+            //lybrary[index] = default(Book);
+            for (int i = index; i < lybrary.Length-1; i++)
+            {   
+                lybrary[i] = lybrary[++i];
+            }
+            lybrary[lybrary.Length-1] = default(Book);
         }
 
         // finds with title
@@ -45,14 +45,32 @@
         // indexer
         public Book this[int i]
         {
-            get { return lybrary[i]; }
-            set { lybrary[i] = value; }
+            get 
+            {
+                if (i < 0 || i >= lybrary.Length) throw new IndexOutOfRangeException();
+                return lybrary[i]; 
+            }
+            set 
+            {
+                if (i < 0 || i >= lybrary.Length) throw new IndexOutOfRangeException();
+                lybrary[i] = value; 
+            }
         }
 
         // counts length
         public int count
         {
-            get { return lybrary.Length;}
+            get 
+            { 
+                int count = 0; 
+                for (int i = 0;i < lybrary.Length; i++)
+                {
+                    // not include empty Book()'s
+                    if ( !(string.IsNullOrEmpty(lybrary[i].Title) && string.IsNullOrEmpty(lybrary[i].Author) && lybrary[i].Year ==0)) count++;
+                }
+                return count;
+            }
+
         }
 
     }
