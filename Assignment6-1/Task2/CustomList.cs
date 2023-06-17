@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace Task2
 {
-
-    public class CustomList<Instance>
+    public class CustomList<T>
     {
-        private Instance[] List;
+        public T[] List;
         private int length;
 
         public CustomList()
         {
-            List = new Instance[1];
+            List = new T[1];
             length = 0;
         }
 
@@ -23,31 +22,31 @@ namespace Task2
             get { return length; }
         }
 
-        public Instance this[int index]
+        public T this[int index]
         {
             get
             {
-                if (index < 0 || index >= length) { throw new IndexOutOfRangeException(); }
+                if (index < 0 || index > length) { throw new IndexOutOfRangeException(); }
                 return List[index];
             }
             set
             {
-                if (index < 0 || index >= length) { throw new IndexOutOfRangeException(); }
+                if (index < 0 || index > length) { throw new IndexOutOfRangeException(); }
                 List[index] = value;
             }
         }
 
-        public void AddElement(Instance elm)
+        public void AddElement(T elm)
         {
             if (length == List.Length)
             {
                 ResizeList(length * 2);
             }
-            List[length++] = elm;
+            List[length] = elm;
             length++;
         }
 
-        public void AddList(CustomList<Instance> newList)
+        public void AddList(CustomList<T> newList)
         {
             if (newList == null) 
             { 
@@ -66,7 +65,7 @@ namespace Task2
             }
         }
 
-        public bool InsertElement(int index, Instance elm)
+        public bool InsertElement(int index, T elm)
         {
             if (index < 0 || index > length) 
             { 
@@ -82,7 +81,7 @@ namespace Task2
             return true;
         }
 
-        public bool InsertList(int index, CustomList<Instance> newList)
+        public bool InsertList(int index, CustomList<T> newList)
         {
             if (index < 0 || index >= length || newList == null) 
             { 
@@ -101,7 +100,7 @@ namespace Task2
             }
             return true;
         }
-        public bool GetElement(int index, out Instance result)
+        public bool GetElement(int index, out T result)
         {
             if (index < 0 || index > length) 
             {
@@ -112,9 +111,9 @@ namespace Task2
             return true;
         }
 
-        public bool GetList(int index, int amount, out CustomList<Instance> result)
+        public bool GetList(int index, int amount, out CustomList<T> result)
         {
-            result = new CustomList<Instance>();
+            result = new CustomList<T>();
             if (index < 0 || index > length || length <= 0)
             {
                 return false;
@@ -126,7 +125,7 @@ namespace Task2
             return true;
         }
 
-        public void RemoveElement(Instance element)
+        public void RemoveElement(T element)
         {
             int index = Array.IndexOf(List, element, 0, length);
             
@@ -140,7 +139,7 @@ namespace Task2
         }
         public void RemoveList (int index, int amount)
         {
-            if (!(index < 0 || index >= length || length <= 0))
+            if (index >= 0 && index < length && length > 0)
             {
                 for (int i = index; i < amount + index && i < length; i++)
                 {
@@ -158,11 +157,11 @@ namespace Task2
             }
             length = 0;
         }
-        public Instance Find(Instance Parammeter) 
+        public T Find(T Parammeter) 
         {
             for(int i = 0; i < length; i++)
             {
-                if (EqualityComparer<Instance>.Default.Equals(List[i], Parammeter))
+                if (EqualityComparer<T>.Default.Equals(List[i], Parammeter))
                 {
                     return List[i];
                 }
@@ -175,4 +174,5 @@ namespace Task2
             Array.Resize(ref List, size);
         }
     }
+
 }
