@@ -1,4 +1,6 @@
-﻿using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
+using DocumentFormat.OpenXml.Wordprocessing;
 using Task2;
 
 internal class Program
@@ -46,13 +48,35 @@ internal class Program
 
         // GetList
         CustomList<Person> getList;
-        Console.WriteLine("GetList (-1,2) " + personList.GetList(-1, 2, out getList));
-        Console.WriteLine("GetList (0,3) " + personList.GetList(0, 3, out getList));
+        Console.Write("GetList (-1,2) " );
+        Console.WriteLine(personList.GetList(-1, 2, out getList));
+
+        Console.Write("GetList (0,3) ");
+        personList.GetList(0, 3, out getList);
+        PrintPersonList(getList);
 
         // InsertElement
         personList.InsertElement(2, person4);
+        personList.GetList(0, personList.Count, out getList);
+        Console.Write("Full List: ");
+        PrintPersonList(getList);
+
+        // GetElement
+        personList.GetElement(2, out Person result1);
+        Console.WriteLine( "\nGetElement [2] " + result1.FirstName);
+
+
 
     }
-    
-    
+
+    private static void PrintPersonList(CustomList<Person> list)
+    {
+        for (int i = 0; i < list.Count; i++)
+        {
+            Console.Write(list[i].FirstName + "  ");
+        }
+        Console.WriteLine();
+    }
+
+
 }
