@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task2
 {
+    //Generic Class with <T>
     public class CustomList<T>
     {
         public T[] List;
@@ -129,9 +130,9 @@ namespace Task2
         {
             int index = Array.IndexOf(List, element, 0, length);
             
-            for (int i = index; i < length-1; ++i)
+            for (int i = index; i < length-1; i++)
             {
-                List[i] = List[++i];
+                List[i] = List[i+1];
             }
 
             length--;
