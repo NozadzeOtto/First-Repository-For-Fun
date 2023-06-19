@@ -38,13 +38,16 @@ internal class Program
         Console.WriteLine("Count: " + personList.Count); // 3
 
         // RemoveEllement
+        PrintPersonList(personList);
         personList.RemoveElement(person1);
+        PrintPersonList(personList);
+
         Console.WriteLine("Count: " + personList.Count); // 2
 
         // AddList 
         CustomList<Person> personList2 = new CustomList<Person>();
-        personList2.AddElement(person1);
-        personList2.AddElement(person2);
+        personList2.AddElement(person5);
+        personList2.AddElement(person6);
         personList.AddList(personList2);
         Console.WriteLine("Count: " + personList.Count); // 4
 
@@ -61,10 +64,10 @@ internal class Program
         personList.InsertElement(2, person4);
 
         // InsertList
+        Console.Write("\nBefore Insert:");
+        PrintPersonList(personList);
         personList.InsertList(personList.Count-1, personList2);
-
-        // Full List
-        Console.Write("Full List: ");
+        Console.Write("After Insert :");
         PrintPersonList(personList);
 
         // RemoveList
