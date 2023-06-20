@@ -36,6 +36,22 @@ namespace Task2
             return Balance.ToString();
         }
 
+        //public double Convert(double amount, string code)
+        //{
+        //    switch (code)
+        //    {
+        //        case nameof(CurrencyType.USD):
+        //            amount *= 2.5;
+        //            break;
+        //        case nameof(CurrencyType.EUR):
+        //            amount *= 2.7;
+        //            break;
+        //        default:
+        //            break;
+        //    }
+        //    return amount;
+        //}
+
     }
 
     public struct Currency
@@ -44,14 +60,20 @@ namespace Task2
         public string Code { get; set; }
         public Currency(double amount, string code) 
         {
-            Amount = amount;
+            Amount = amount;   
             Code = code;
         }
-
         public override string ToString()
         {
             return $"{Amount} {Code}";
         }
-        
     }
+
+    //public enum CurrencyType
+    //{
+    //    USD,
+    //    GEL,
+    //    EUR
+    //}
+
 }
