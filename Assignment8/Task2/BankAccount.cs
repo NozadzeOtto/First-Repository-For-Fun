@@ -20,18 +20,19 @@ namespace Task2
             Balance = balance;
         }
 
-        public void Deposit(Currency depositCurrency)
+        public void Deposit(Currency amount)
         {
-            Balance = new Currency(Balance.Amount + depositCurrency.Amount, depositCurrency.Code);
+            Balance = new Currency(Balance.Amount + amount.Amount, amount.Code);
         }
 
-        public void Withdraw(Currency withdrawCurrency)
+        public void Withdraw(Currency amount)
         {
-            Balance = new Currency(Balance.Amount - withdrawCurrency.Amount, withdrawCurrency.Code);
+            Balance = new Currency(Balance.Amount - amount.Amount, amount.Code);
         }
 
         public string BalanceCheck()
         {
+            //return $"{Balance.Amount} {Balance.Code}";
             return Balance.ToString();
         }
 
