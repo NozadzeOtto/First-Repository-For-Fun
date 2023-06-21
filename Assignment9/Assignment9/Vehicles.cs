@@ -27,6 +27,7 @@ namespace Assignment9
     public class Combat : Vehicles, IDescription
     {
         public bool Shoots { get; set; }
+        public string Details { get; set; }
         public override void GetInfo(string name)
         {
             CategoryName = name;
@@ -82,6 +83,7 @@ namespace Assignment9
 
     public class Personal : Vehicles, IDescription
     {
+        public string Color { get; set; }
         public int SeatAmount { get; set; }
         public override void GetInfo(string name)
         {
@@ -108,6 +110,7 @@ namespace Assignment9
         Lamborgini = 5,
         Ferrari = 6,
         Mercedes_Benz = 7,
+        Volvo = 8,
     }
 
     public enum SportCar
