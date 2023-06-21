@@ -11,7 +11,7 @@ namespace Task2
     {
         private readonly string _accountNumber;
         private readonly string _accountHolderName;
-        public Currency Balance { get; set; }
+        private Currency Balance { get; set; }
 
         public BankAccount(string accountNumber, string accountHolderName, Currency balance)
         {

@@ -7,6 +7,8 @@
         Console.Write("\nInputed Array : ");
         foreach (char i in array) Console.Write("{0}, ", i);
 
+
+
         findCharInArray(array, 'a');
 
         // fills array with console
