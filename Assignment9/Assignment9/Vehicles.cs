@@ -14,22 +14,23 @@ namespace Assignment9
 
     public abstract class Vehicles
     {
-        public string Name { get; set; }
+        public string CategoryName { get; set; }
         public Models Models { get; set; }
         public abstract void GetInfo(string name);
         public virtual void PrintInfo()
         {
-            Console.WriteLine($"Name: {Name}");
-            Console.WriteLine($"Model: {Models.ToString()}");
+            Console.WriteLine($"Category: {CategoryName}");
+            Console.WriteLine($"Model: {Models}");
         }
     }
 
     public class Combat : Vehicles, IDescription
     {
         public bool Shoots { get; set; }
+        public string Details { get; set; }
         public override void GetInfo(string name)
         {
-            Name = name;
+            CategoryName = name;
         }
         public void PrintDescription()
         {
@@ -48,7 +49,7 @@ namespace Assignment9
         public int horsePower { get; set; }
         public override void GetInfo(string name)
         {
-            Name = name;
+            CategoryName = name;
         }
         public override void PrintInfo()
         {
@@ -67,7 +68,7 @@ namespace Assignment9
         public int PassengerAmount { get; set; }
         public override void GetInfo(string name)
         {
-            Name = name;
+            CategoryName = name;
         }
         public override void PrintInfo()
         {
@@ -82,10 +83,11 @@ namespace Assignment9
 
     public class Personal : Vehicles, IDescription
     {
+        public string Color { get; set; }
         public int SeatAmount { get; set; }
         public override void GetInfo(string name)
         {
-            Name = name;
+            CategoryName = name;
         }
         public override void PrintInfo()
         {
@@ -108,6 +110,7 @@ namespace Assignment9
         Lamborgini = 5,
         Ferrari = 6,
         Mercedes_Benz = 7,
+        Volvo = 8,
     }
 
     public enum SportCar
