@@ -11,11 +11,12 @@ namespace Assignment9
     {
         void PrintDescription();
     }
+
     public abstract class Vehicles
     {
         public string Name { get; set; }
         public Models Models { get; set; }
-        public abstract void GetInfo();
+        public abstract void GetInfo(string name);
         public virtual void PrintInfo()
         {
             Console.WriteLine($"Name: {Name}");
@@ -23,22 +24,17 @@ namespace Assignment9
         }
     }
 
-
     public class Combat : Vehicles, IDescription
     {
         public bool Shoots { get; set; }
-        public override void GetInfo()
+        public override void GetInfo(string name)
         {
-            Console.WriteLine("Choose combat vehicle:");
-            Console.WriteLine("Tank");
-            Console.WriteLine("Armoured Car");
-            Name = Console.ReadLine();
+            Name = name;
         }
         public void PrintDescription()
         {
             Console.WriteLine("Combat vehicles are used for wars.");
         }
-
         public override void PrintInfo()
         {
             base.PrintInfo();
@@ -50,13 +46,9 @@ namespace Assignment9
     {
         public int TopSpeed{ get; set; }
         public int horsePower { get; set; }
-        public override void GetInfo()
+        public override void GetInfo(string name)
         {
-            Console.WriteLine("Choose combat vehicle:");
-            Console.WriteLine("F1");
-            Console.WriteLine("SuperCar");
-            Console.WriteLine("RallyCar");
-            Name = Console.ReadLine();
+            Name = name;
         }
         public override void PrintInfo()
         {
@@ -73,12 +65,9 @@ namespace Assignment9
     public class Public : Vehicles, IDescription
     {
         public int PassengerAmount { get; set; }
-        public override void GetInfo()
+        public override void GetInfo(string name)
         {
-            Console.WriteLine("Choose combat vehicle:");
-            Console.WriteLine("Bus");
-            Console.WriteLine("Trum");
-            Name = Console.ReadLine();
+            Name = name;
         }
         public override void PrintInfo()
         {
@@ -87,31 +76,28 @@ namespace Assignment9
         }
         public void PrintDescription()
         {
-            Console.WriteLine("Public vehicles are used public transport.");
+            Console.WriteLine("Public vehicles are used for public transport.");
         }
     }
 
     public class Personal : Vehicles, IDescription
     {
-        public int PassengerAmount { get; set; }
-        public override void GetInfo()
+        public int SeatAmount { get; set; }
+        public override void GetInfo(string name)
         {
-            Console.WriteLine("Choose combat vehicle:");
-            Console.WriteLine("Bus");
-            Console.WriteLine("Trum");
-            Name = Console.ReadLine();
+            Name = name;
         }
         public override void PrintInfo()
         {
             base.PrintInfo();
-            Console.WriteLine($"Passenger amount: {PassengerAmount}");
+            Console.WriteLine($"Amount of seats: {SeatAmount}");
         }
         public void PrintDescription()
         {
-            Console.WriteLine("Personal vehicles are used family or personal use.");
+            Console.WriteLine("Personal vehicles are used for family or personal use.");
         }
-    }
-
+    } 
+    
     public enum Models
     {
         Undefined = 0,
@@ -122,5 +108,33 @@ namespace Assignment9
         Lamborgini = 5,
         Ferrari = 6,
         Mercedes_Benz = 7,
+    }
+
+    public enum SportCar
+    {
+        Off_Road = 1,
+        Rally = 2,
+        F1 = 3,
+        SuperCar = 4,
+    }
+
+    public enum PublicCar
+    {
+        Bus = 1,
+        Trum = 2,
+    }
+
+    public enum PersonalCar
+    {
+        SUV = 1,
+        Sedan = 2,
+        Motorcycle = 3,
+        Bicycle = 4,
+    }
+
+    public enum CombatCar
+    {
+        Tank = 1,
+        ArmouredCar = 2,
     }
 }
