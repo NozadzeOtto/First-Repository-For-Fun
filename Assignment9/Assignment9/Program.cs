@@ -37,6 +37,8 @@ public class Program
             vehicle.Models = getModels();
             Console.WriteLine("Shoots? (type: 'Y')");
             if (Console.ReadLine().ToLower() == "y") vehicle.Shoots = true;
+            Console.WriteLine("Input more details: ");
+            vehicle.Details = Console.ReadLine();
             vehicle.PrintInfo();
             vehicle.PrintDescription();
         }
@@ -75,6 +77,8 @@ public class Program
             vehicle.Models = getModels();
             Console.WriteLine("Input amount of seats:");
             vehicle.SeatAmount = int.Parse(Console.ReadLine());
+            Console.WriteLine("Input color:");
+            vehicle.Color = Console.ReadLine();
             vehicle.PrintInfo();
             vehicle.PrintDescription();
         }
