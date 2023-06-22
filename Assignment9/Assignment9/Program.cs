@@ -28,10 +28,11 @@ public class Program
             Console.WriteLine();
         }
 
+        //Lets User Create Combat Class Object
         void CreateCombatVehicle()
         {
             Combat vehicle = new Combat();
-            int categoryNumber = Helpers.PrintSportCarsCategories(typeof(CombatCar));
+            int categoryNumber = Helpers.PrintVehiclesCategories(typeof(CombatCar));
             string name = Enum.GetName(typeof(CombatCar), categoryNumber);
             vehicle.GetInfo(name);
             vehicle.Models = Helpers.getModels();
@@ -42,10 +43,12 @@ public class Program
             vehicle.PrintInfo();
             vehicle.PrintDescription();
         }
+
+        ////Lets User Create Sport Class Object
         void CreateSportVehicle()
         {
             Sport vehicle= new Sport();
-            int categoryNumber = Helpers.PrintSportCarsCategories(typeof(SportCar));
+            int categoryNumber = Helpers.PrintVehiclesCategories(typeof(SportCar));
             string name = Enum.GetName(typeof(SportCar), categoryNumber);
             vehicle.GetInfo(name);
             vehicle.Models = Helpers.getModels();
@@ -56,10 +59,12 @@ public class Program
             vehicle.PrintInfo();
             vehicle.PrintDescription();
         }
+
+        //Lets User Create Public Class Object
         void CreatePublicVehicle()
         {
             Public vehicle = new Public();
-            int categoryNumber = Helpers.PrintSportCarsCategories(typeof(PublicCar));
+            int categoryNumber = Helpers.PrintVehiclesCategories(typeof(PublicCar));
             string name = Enum.GetName(typeof(PublicCar), categoryNumber);
             vehicle.GetInfo(name);
             vehicle.Models = Helpers.getModels();
@@ -68,10 +73,12 @@ public class Program
             vehicle.PrintInfo();
             vehicle.PrintDescription();
         }
+
+        //Lets User Create Personal Class Object
         void CreatePersonalVehicle()
         {
             Personal vehicle = new Personal();
-            int categoryNumber = Helpers.PrintSportCarsCategories(typeof(PersonalCar));
+            int categoryNumber = Helpers.PrintVehiclesCategories(typeof(PersonalCar));
             string name = Enum.GetName(typeof(PersonalCar), categoryNumber);
             vehicle.GetInfo(name);
             vehicle.Models = Helpers.getModels();

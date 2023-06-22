@@ -1,10 +1,6 @@
 ﻿namespace Assignment9
 {
-    interface IDescription
-    {
-        void PrintDescription();
-    }
-
+    //Base Class Vehicles
     public abstract class Vehicles
     {
         public string CategoryName { get; set; }
@@ -15,5 +11,10 @@
             Console.WriteLine($"Category: {CategoryName}");
             Console.WriteLine($"Model: {Models}");
         }
+    }
+    
+    interface IDescription
+    {
+        void PrintDescription();
     }
 }
