@@ -1,4 +1,5 @@
-﻿public enum Models
+﻿//Just Enums 
+public enum Models
 {
     Undefined = 0,
     BMW = 1,

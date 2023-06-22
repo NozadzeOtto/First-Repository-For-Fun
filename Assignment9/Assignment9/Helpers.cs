@@ -2,7 +2,7 @@
 {
     public static class Helpers
     {
-
+        // Reads int in range input
         public static int ReadInt(int min, int max)
         {
             int result;
@@ -13,6 +13,7 @@
             return result;
         }
 
+        //Prints All Models and than Returns Model Enum With Given Number
         public static Models getModels()
         {
             int number = 0;
@@ -38,8 +39,8 @@
                 default: return Models.Undefined;
             }
         }
-
-        public static int PrintSportCarsCategories(Type enumType)
+        //Gets Any Emun And Prints All Of Its Value
+        public static int PrintVehiclesCategories(Type enumType)
         {
             int number = 1;
             int categoryNumber;
