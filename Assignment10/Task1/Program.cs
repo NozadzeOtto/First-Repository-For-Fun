@@ -12,6 +12,9 @@ internal class Program
         matrix2.InputElements();
         Console.WriteLine(matrix2.ToString());
 
+        //Matrix matrix3 = 5;
+        //Console.WriteLine(matrix3.ToString());
+
         //var addedMatrix = matrix1 + matrix2;
         //Console.WriteLine("Add matrixes result : ");
         //Console.WriteLine(addedMatrix.ToString());
@@ -36,5 +39,5 @@ internal class Program
 
 
 
-    
+
 }

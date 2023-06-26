@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using System.Security.Principal;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Task1
@@ -29,6 +30,19 @@ namespace Task1
                 }
             }
         } 
+
+        public static implicit operator Matrix(decimal d)
+        {
+            Matrix result = new Matrix(2,2);
+            for (int i = 0; i < result.matrix.GetLength(0); i++)
+            {
+                for(int j = 0;j < result.matrix.GetLength(1); j++)
+                {
+                    result.matrix[i, j] = d;
+                }
+            }
+            return result;
+        }
 
         //for 2 dimentions
         public static Matrix operator + ( Matrix m1, Matrix m2 )
