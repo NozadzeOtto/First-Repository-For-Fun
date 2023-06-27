@@ -13,25 +13,26 @@ internal class Program
         Console.WriteLine(matrix2.ToString());
 
         Matrix matrix3 = 5;
-        Console.WriteLine("Implicit - Matrix = 5 : ");
+        Console.WriteLine("Implicit: Matrix = 5 ");
         Console.WriteLine(matrix3.ToString());
 
         var addedMatrix = matrix1 + matrix2;
-        Console.WriteLine("Add matrixes result : ");
+        Console.WriteLine("Add matrices result : ");
         Console.WriteLine(addedMatrix.ToString());
 
         var substractedMatrix = matrix1 - matrix2;
-        Console.WriteLine("Substract matrixes result : ");
+        Console.WriteLine("Substract matrices result : ");
         Console.WriteLine(substractedMatrix.ToString());
 
         var multipliedMatrix = matrix1 * matrix2;
-        Console.WriteLine("Multiply matrixes result : ");
+        Console.WriteLine("Multiply matrices result : ");
         Console.WriteLine(multipliedMatrix.ToString());
 
         var invertedMatrix = -matrix1;
-        Console.WriteLine("Inverted matrixe1 result : ");
+        Console.WriteLine("Inverted matrix1 result : ");
         Console.WriteLine(invertedMatrix.ToString());
 
+        Console.WriteLine("matrix1 equals to matrix2 : ");
         Console.WriteLine(matrix1.Equals(matrix2));
 
 

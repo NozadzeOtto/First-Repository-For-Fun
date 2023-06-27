@@ -131,10 +131,7 @@ namespace Task1
             result.matrix[0, 1] = -(m.matrix[0, 1]);
             result.matrix[1, 0] = -(m.matrix[1, 0]);
             result.matrix[1, 1] = m.matrix[0, 0];
-            //Console.Write(result.matrix[0, 0] + " ");
-            //Console.WriteLine(result.matrix[0, 1]);
-            //Console.Write(result.matrix[1, 0] + " ");
-            //Console.WriteLine(result.matrix[1, 1]);
+            //Console.Write(result.matrix[0, 0] + "\t" + result.matrix[0, 1] + "\n" + result.matrix[1, 0] + "\t" + result.matrix[1, 1]);
 
             result = result * (1/det); 
 
