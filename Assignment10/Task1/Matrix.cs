@@ -19,9 +19,9 @@ namespace Task1
     public class Matrix
     {
         public decimal[,] matrix { get; set; }
-        public Matrix(int rows, int cols)
+        public Matrix()
         {
-            matrix = new decimal[rows, cols];
+            matrix = new decimal[2, 2];
         }
 
         public void InputElements() 
@@ -31,16 +31,26 @@ namespace Task1
             {
                 for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    Console.Write($"[{i},{j}]:");
-                    decimal number = decimal.Parse(Console.ReadLine());
-                    matrix[i, j] = number;
+                    while (true) {
+                        Console.Write($"[{i},{j}]:");
+                        try
+                        {
+                            decimal number = decimal.Parse(Console.ReadLine());
+                            matrix[i, j] = number;
+                            break;
+                        }
+                        catch 
+                        {
+                            Console.WriteLine("sheiyvanet mxolod ricxviti mnishneloba: ");
+                        }
+                    }
                 }
             }
         } 
 
         public static implicit operator Matrix(decimal d)
         {
-            Matrix result = new Matrix(2,2);
+            Matrix result = new Matrix();
             for (int i = 0; i < result.matrix.GetLength(0); i++)
             {
                 for(int j = 0;j < result.matrix.GetLength(1); j++)
@@ -54,7 +64,7 @@ namespace Task1
         //for 2 dimentions
         public static Matrix operator + ( Matrix m1, Matrix m2 )
         {
-            Matrix result = new Matrix(m1.matrix.GetLength(0), m1.matrix.GetLength(1));
+            Matrix result = new Matrix();
             for (int row = 0; row < m1.matrix.GetLength(0); row++)
             {
                 for(int col = 0; col < m1.matrix.GetLength(1); col++)
@@ -67,7 +77,7 @@ namespace Task1
 
         public static Matrix operator - (Matrix m1, Matrix m2)
         {
-            Matrix result = new Matrix(m1.matrix.GetLength(0), m1.matrix.GetLength(1));
+            Matrix result = new Matrix();
             for (int row = 0; row < m1.matrix.GetLength(0); row++)
             {
                 for (int col = 0; col < m1.matrix.GetLength(1); col++)
@@ -80,7 +90,7 @@ namespace Task1
         public static Matrix operator * (Matrix m1, Matrix m2)
         {
             decimal temp = 0;
-            Matrix result = new Matrix(m1.matrix.GetLength(0), m2.matrix.GetLength(1));
+            Matrix result = new Matrix();
             for (int i = 0; i < m1.matrix.GetLength(0); i++)
             {
                 for (int j = 0; j < m2.matrix.GetLength(1); j++)
@@ -99,7 +109,7 @@ namespace Task1
         public static Matrix operator *(Matrix m, decimal temp)
         {
             
-            Matrix result = new Matrix(m.matrix.GetLength(0), m.matrix.GetLength(1));
+            Matrix result = new Matrix();
             for (int i = 0; i < m.matrix.GetLength(0); i++)
             {
                 for (int j = 0; j < m.matrix.GetLength(1); j++)
@@ -112,7 +122,7 @@ namespace Task1
 
         public static Matrix operator -(Matrix m)
         {
-            Matrix result = new Matrix(m.matrix.GetLength(0), m.matrix.GetLength(1));
+            Matrix result = new Matrix();
             decimal det;
             det = m.matrix[0, 0] * m.matrix[1, 1] - m.matrix[0, 1] * m.matrix[1, 0];
             //Console.WriteLine("det: " + det);
@@ -161,10 +171,10 @@ namespace Task1
             string result = "\n";
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
-                result += "| ";
+                result += "|\t";
                 for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    result += $"{matrix[i, j]} ";
+                    result += $"{matrix[i, j]}\t";
                 }
                 result += "|\n";
             }
