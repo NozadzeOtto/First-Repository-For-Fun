@@ -21,6 +21,7 @@ namespace Task2
         public double A { get; set; }
         public double B { get; set; }
         public double C { get; set; }
+
         public Triangle(double a, double b, double c ) 
         {
             A = a;
@@ -28,6 +29,7 @@ namespace Task2
             C = c;
             Validate(this);
         }
+
         public Triangle() 
         { 
             while (true)
@@ -40,16 +42,6 @@ namespace Task2
                 C = double.Parse(Console.ReadLine());
                 if (Validate(this)) break; 
             }
-        }
-
-        public static bool Validate(Triangle tr)
-        {
-            if (tr.A + tr.B <= tr.C || tr.A + tr.C <= tr.B || tr.B + tr.C <= tr.A)
-            {
-                Console.WriteLine("ori gverdis sigrdzeebis jami ar unda iyos mesameze naklebi!");
-                return false;
-            }
-            else { return true; }
         }
 
         public double Perimeter()
@@ -67,7 +59,7 @@ namespace Task2
 
         public static bool operator ==(Triangle tr1 , Triangle tr2)
         {
-            if(tr1.Area() == tr2.Area())
+            if (tr1.Area() == tr2.Area())
             {
                 return true;
             }
@@ -122,6 +114,16 @@ namespace Task2
         public override string ToString()
         {
             return $"x = {A}, y = {B}, z = {C}"; 
+        }
+
+        public static bool Validate(Triangle tr)
+        {
+            if (tr.A + tr.B <= tr.C || tr.A + tr.C <= tr.B || tr.B + tr.C <= tr.A)
+            {
+                Console.WriteLine("ori gverdis sigrdzeebis jami ar unda iyos mesameze naklebi!");
+                return false;
+            }
+            else { return true; }
         }
     }
 }

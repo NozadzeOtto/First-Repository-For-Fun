@@ -17,19 +17,19 @@ internal class Program
         Console.WriteLine(matrix3.ToString());
 
         var addedMatrix = matrix1 + matrix2;
-        Console.WriteLine("Add matrices result : ");
+        Console.WriteLine("Add matrices : ");
         Console.WriteLine(addedMatrix.ToString());
 
         var substractedMatrix = matrix1 - matrix2;
-        Console.WriteLine("Substract matrices result : ");
+        Console.WriteLine("Substract matrices : ");
         Console.WriteLine(substractedMatrix.ToString());
 
         var multipliedMatrix = matrix1 * matrix2;
-        Console.WriteLine("Multiply matrices result : ");
+        Console.WriteLine("Multiply matrices : ");
         Console.WriteLine(multipliedMatrix.ToString());
 
         var invertedMatrix = -matrix1;
-        Console.WriteLine("Inverted matrix1 result : ");
+        Console.WriteLine("Inverted matrix1 : ");
         Console.WriteLine(invertedMatrix.ToString());
 
         Console.WriteLine("matrix1 equals to matrix2 : ");

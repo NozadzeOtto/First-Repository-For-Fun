@@ -41,7 +41,7 @@ namespace Task1
                         }
                         catch 
                         {
-                            Console.WriteLine("sheiyvanet mxolod ricxviti mnishneloba: ");
+                            Console.WriteLine("sheiyvanet mxolod ricxviti mnishvneloba: ");
                         }
                     }
                 }
@@ -61,7 +61,6 @@ namespace Task1
             return result;
         }
 
-        //for 2 dimentions
         public static Matrix operator + ( Matrix m1, Matrix m2 )
         {
             Matrix result = new Matrix();
@@ -145,7 +144,7 @@ namespace Task1
                 return false;
             }
 
-            // DownCast
+            // DownCast ?
             Matrix matrix2 = (Matrix)obj;
             if(matrix2.matrix.GetLength(0) != matrix.GetLength(0) || matrix2.matrix.GetLength(1) != matrix.GetLength(1))
             { 
