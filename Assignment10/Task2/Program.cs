@@ -20,7 +20,8 @@ internal class Program
         Console.WriteLine("triangle1 < triangle2 : " + (triangle1 < triangle2));
         Console.WriteLine("triangle1 == triangle2 : " + (triangle1 == triangle2));
         Console.WriteLine("triangle1 != triangle2 : " + (triangle1 != triangle2));
+        Console.WriteLine();
 
-        Console.WriteLine("triangle1 + triangle2" + (triangle1 + triangle2));
+        Console.WriteLine("triangle1 + triangle2 : " + (triangle1 + triangle2));
     }
 }
