@@ -139,7 +139,7 @@ namespace Task1
 
         public override bool Equals(object? obj)
         {
-            if (obj == null || GetType() != obj.GetType())
+            if (ReferenceEquals(null, obj ) || this.GetType() != obj.GetType())
             {
                 return false;
             }
