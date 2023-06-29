@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task1
 {
-    public interface IGeneric<T>
+    public interface IGeneric<T> where T : notnull
     {
         T Add(T item, T item2);
         T Substract(T item, T item2);
