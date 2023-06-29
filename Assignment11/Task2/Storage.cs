@@ -33,14 +33,13 @@ namespace Task2
                 if (index < 0 || index >= length) { throw new IndexOutOfRangeException("Index out of range."); }
                 storage[index] = value;
             }
-
         }
 
         public void Add(T item)
         {
             if(length >= storage.Length) 
             {
-                ResizeStorage(length * 2);
+                ResizeStorage((length + 1) * 2);
             }
             storage[length] = item;
             length++;
@@ -79,7 +78,7 @@ namespace Task2
         public void Clear()
         {
             ResizeStorage(0);
-            length = 1;
+            length = 0;
         }
 
         private void ResizeStorage(int size)
