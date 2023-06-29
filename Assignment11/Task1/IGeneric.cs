@@ -8,8 +8,8 @@ namespace Task1
 {
     public interface IGeneric<T>
     {
-        public T Add(T item, T item2);
-        public T Substract(T item, T item2);
-        public T Multiply(T item, T item2);
+        T Add(T item, T item2);
+        T Substract(T item, T item2);
+        T Multiply(T item, T item2);
     }
 }
