@@ -1,149 +1,234 @@
 ﻿using BenchmarkDotNet.Attributes;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task2
 {
     [MemoryDiagnoser]
     [RankColumn]
+    //[Config(typeof(AntiVirusFriendlyConfig))]
     public class Benchmark
     {
         Person oto = new("Oto", "Nozadze", 20);
 
         Stack<Person> stack = new();
-        Person[] arr = new Person[1];
-        List<Person> list = new();
-        ArrayList arrList = new ArrayList();
-        Dictionary<string, object> dictionary = new();
-        SortedList<string, Person> listSorted = new();
-        HashSet<Person> hashSet = new();
-        Hashtable hashTable = new();
         Queue<Person> queue = new();
+        Person[] arr = new Person[] { new Person("Oto", "Nozadze", 20) };
+        List<Person> list = new() { new Person("Oto", "Nozadze", 20) };
+        ArrayList arrList = new ArrayList() { new Person("Oto", "Nozadze", 20) };
+        Dictionary<string, object> dictionary = new() { { "oto", new Person("Oto", "Nozadze", 20) } };
+        SortedList<string, Person> listSorted = new() { { "oto", new Person("Oto", "Nozadze", 20) } };
+        HashSet<Person> hashSet = new() { new Person("Oto", "Nozadze", 20) };
+        Hashtable hashTable = new() { { "oto", new Person("Oto", "Nozadze", 20) } };
 
-        // Array 
+
+        ////Array
+        //[Benchmark]
+        //public void arrayAdd()
+        //{
+        //    arr[0] = oto;
+        //}
+        //[Benchmark]
+        //public void arrayIndexOf()
+        //{
+        //    Array.IndexOf(arr, oto);
+        //}
+        //[Benchmark]
+        //public void arrayValueOnIndex()
+        //{
+        //    _ = arr[0]
+        //}
+
+
+
+        ////List 
+        //[Benchmark]
+        //public void ListAdd()
+        //{
+        //    list.Add(oto);
+        //}
         [Benchmark]
-        public void array()
+        public void ListContains()
         {
-            arr[0] = oto;
-
-            //Array.IndexOf(arr, oto);
-
-            //_ = arr[0];
+            list.Contains(oto);
         }
+        //[Benchmark]
+        //public void ListIndexOf()
+        //{
+        //    var index = list.IndexOf(oto);
+        //}
+        //[Benchmark]
+        //public void ListValueOnIndex()
+        //{
+        //    var value = list[0];
+        //}
+        //[Benchmark]
+        //public void ListRemove()
+        //{
+        //    list.Remove(oto);
+        //}
 
 
-        //List 
+        ////ArrayList
+        //[Benchmark]
+        //public void arrayListAdd()
+        //{
+        //    arrList.Add(oto);
+        //}
         [Benchmark]
-        public void List()
+        public void arrayListContains()
         {
-            list.Add(oto);
-
-            //list.Contains(oto);
-
-            //var index = list.IndexOf(oto);
-
-            //var value = list[index];
-
-            //list.Remove(oto);
-
+            arrList.Contains(oto);
         }
+        //[Benchmark]
+        //public void arrayListIndexOf()
+        //{
+        //    var index = arrList.IndexOf(oto);
+        //}
+        //[Benchmark]
+        //public void arrayListValueOnIndex()
+        //{
+        //    _ = arrList[0];
+        //}
+        //[Benchmark]
+        //public void arrayListRemove()
+        //{
+        //    arrList.Remove(oto);
+        //}
 
 
-        //ArrayList
+        ////Dictionary
+        //[Benchmark]
+        //public void DictionaryAdd()
+        //{
+        //    dictionary.Add("oto", oto);
+        //}
         [Benchmark]
-        public void arrayList()
+        public void dictionaryContains()
         {
-            arrList.Add(oto);
-
-            //arrList.Contains(oto);
-
-            //var index = arrList.IndexOf(oto);
-
-            //_ = arrList[index];
-
-            //arrList.Remove(oto);
+            dictionary.ContainsValue(oto);
         }
+        //[Benchmark]
+        //public void DictionaryValueOnKey()
+        //{
+        //    _ = dictionary["oto"];
+        //}
+        //[Benchmark]
+        //public void DictionaryRemove()
+        //{
+        //    dictionary.Remove("oto");
+        //}
 
 
-        //Dictionary
+        ////SortedList
+        //[Benchmark]
+        //public void sortedListAdd()
+        //{
+        //    listSorted.Add("oto", oto);
+        //}
         [Benchmark]
-        public void Dictionary()
+        public void sortedListContains()
         {
-            dictionary.Add("oto", oto);
-
-            //_ = dictionary["oto"];
-
-            //dictionary.Remove("oto");
+            listSorted.ContainsValue(oto);
         }
+        //[Benchmark]
+        //public void sortedListValueOnKey()
+        //{
+        //    _ = listSorted["oto"];
+        //}
+        //[Benchmark]
+        //public void sortedListRemove()
+        //{
+        //    listSorted.Remove("oto");
+        //}
 
-
-        //SortedList
+        ////HashSet
+        //[Benchmark]
+        //public void HashSetAdd()
+        //{
+        //    hashSet.Add(oto);
+        //}
         [Benchmark]
-        public void sortedList()
+        public void HashSetContains()
         {
-            listSorted.Add("oto", oto);
-
-            //_ = listSorted["oto"];
-
-            //listSorted.Remove("oto");
+            hashSet.Contains(oto);
         }
+        //[Benchmark]
+        //public void HashSetRemove()
+        //{
+        //    hashSet.Remove(oto);
+        //}
 
-        //HashSet
+
+        ////HashTable
+        //[Benchmark]
+        //public void HashTableAdd()
+        //{
+        //    hashTable.Add("oto", oto);
+        //}
         [Benchmark]
-        public void HashSet()
+        public void HashTableContains()
         {
-            hashSet.Add(oto);
-
-            //hashSet.Contains(oto);
-
-            //hashSet.Remove(oto);
+            hashTable.Contains(oto);
         }
+        //[Benchmark]
+        //public void HashTableValueOnKey()
+        //{
+        //    _ = hashTable["oto"];
+        //}
+        //[Benchmark]
+        //public void HashTableRemove()
+        //{
+        //    hashTable.Remove(oto);
+        //}
 
-        //HashTable
+        ////Stack
+        //[Benchmark]
+        //public void StackPush()
+        //{
+        //    stack.Push(oto);
+        //}
         [Benchmark]
-        public void HashTable()
+        public void StackContains()
         {
-            hashTable.Add("oto", oto);
-
-            //hashTable.Contains(oto);
-
-            //_ = hashTable["oto"];
-
-            //hashTable.Remove(oto);
+            stack.Contains(oto);
         }
+        //[Benchmark]
+        //public void StackPeek()
+        //{
+        //    stack.Peek();
+        //}
+        //[Benchmark]
+        //public void StackPop()
+        //{
+        //    stack.Pop();
+        //}
 
-        //Stack
+        ////Queue
+        //[Benchmark]
+        //public void QueueAdd()
+        //{
+        //    queue.Enqueue(oto);
+        //}
         [Benchmark]
-        public void Stack()
+        public void QueueContains()
         {
-            stack.Push(oto);
-
-            //stack.Contains(oto);
-
-            //stack.Peek();
-                
-            //stack.Pop();
-
+            queue.Contains(oto);
         }
-
-        //Queue
-        [Benchmark]
-        public void Queue()
-        {
-            queue.Enqueue(oto);
-
-            //queue.Contains(oto);
-            
-            //queue.Append(oto);
-            
-            //queue.Peek();
-
-            //queue.Dequeue();
-        }
+        //[Benchmark]
+        //public void QueueAppend()
+        //{
+        //    queue.Append(oto);
+        //}
+        //[Benchmark]
+        //public void QueuePeek()
+        //{
+        //    queue.Peek();
+        //}
+        //[Benchmark]
+        //public void QueueDequeue()
+        //{
+        //    queue.Dequeue();
+        //}
     }
 }
 
