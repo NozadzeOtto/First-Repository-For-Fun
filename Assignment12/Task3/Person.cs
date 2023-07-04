@@ -2,15 +2,31 @@
 {
     public class Person
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
+        public long ID { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
         public int Age { get; set; }
+        public int PhoneNumber { get; set; }
 
-        public Person(string name, string surname, int age) 
+        public Person() { }
+
+        public Person(long id, string firstname, string lastname, int age) 
         {
-            Name = name;
-            Surname = surname;
+            ID = id;
+            Firstname = firstname;
+            Lastname = lastname;
             Age = age;
+        }
+
+        public override bool Equals(object? p2)
+        {
+            if(this.GetType() != p2.GetType()) return false;
+
+            Person person2 = (Person)p2;
+
+            if(ID == person2.ID) return true;
+
+            return false;
         }
     }
 }
