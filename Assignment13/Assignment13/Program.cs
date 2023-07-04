@@ -11,9 +11,12 @@ try
 {
     //library.AddBook(book1);
     library.AddBook(book2);
+    library.AddBook(book2);
+    library.AddBook(book2);
+
     //library.AddBook(book3);
 }
-catch(ApplicationException ex)
+catch (ApplicationException ex)
 {
     Console.WriteLine(ex);
 }
