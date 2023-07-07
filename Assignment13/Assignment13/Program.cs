@@ -1,5 +1,5 @@
 ﻿using Assignment13;
-
+//Uncomment to see all exceptions
 //Book book1 = new("", "", 44);
 Book book2 = new("Goals", "Brian Tracy", 4444);
 Book book3 = null;
@@ -11,8 +11,8 @@ try
 {
     //library.AddBook(book1);
     library.AddBook(book2);
-    library.AddBook(book2);
-    library.AddBook(book2);
+    //library.AddBook(book2);
+    //library.AddBook(book2);
 
     //library.AddBook(book3);
 }
