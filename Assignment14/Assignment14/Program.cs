@@ -67,10 +67,10 @@ internal class Program
         Console.WriteLine("Enter File Name:");
         string fileName = Console.ReadLine();
         string path = Helpers.GetPath(fileName);
-        using var fs = new StreamReader(path);
 
         if (File.Exists(path))
         {
+            using var fs = new StreamReader(path);
             Quizz quizz = GetQuizzFromFile(fs);
             FillOutQuizz(quizz);
         }
@@ -87,12 +87,15 @@ internal class Program
         int correctAnswersCount = 0;
         int score = 0;
         Console.WriteLine($"Fill out the Quizz - {quizz.Name}");
+        Console.WriteLine("Enter you Full Name:");
+        string user = Console.ReadLine();
+        Console.WriteLine();
         foreach (Questions question in quizz.Questions)
         {
             Console.WriteLine($"{question.Question} ({question.Score} Score)");
             for (int i = 0; i < question.PossibleAnswers.Count; i++)
             {
-                Console.Write(i + ". " + question.PossibleAnswers[i] + "   ");
+                Console.Write($"{i}){question.PossibleAnswers[i]}\t");
             }
             Console.WriteLine();
             Console.WriteLine("Answer with number:");
@@ -104,7 +107,7 @@ internal class Program
             }
         }
 
-        Console.WriteLine($"You answered {correctAnswersCount} questions correctly. you score is {score}");
+        Console.WriteLine($"{user}, You answered {correctAnswersCount} questions correctly. Your score is {score}");
 
     }
 
@@ -112,23 +115,23 @@ internal class Program
     private static Quizz GetQuizzFromFile(StreamReader fs)
     {
         var quizz = new Quizz();
-        var questions = new Questions();
         quizz.Name = fs.ReadLine();
 
         string line;
         while ((line = fs.ReadLine()) != null)
         {
+            var questions = new Questions();
             questions.Question = line;
             questions.Score = int.Parse(fs.ReadLine());
             questions.RealAnswerKey = int.Parse(fs.ReadLine());
-            string answer;
-            while ((answer = fs.ReadLine()) != null && answer != "--")
+            string possibleAnswer;
+            while ((possibleAnswer = fs.ReadLine()) != null && possibleAnswer != "--")
             {
-                questions.PossibleAnswers.Add(answer);
+                questions.PossibleAnswers.Add(possibleAnswer);
             }
+            quizz.Questions.Add(questions);
         }
 
-        quizz.Questions.Add(questions);
         return quizz;
     }
 
@@ -137,8 +140,12 @@ internal class Program
     private static void AddQuestionsInQuizz(string fileName,  Helpers.FileOption fileption)
     {
         Quizz quizz= new Quizz();
-        Console.WriteLine("Enter Quizz Name:");
-        quizz.Name = Console.ReadLine();
+        if((int)fileption!=2)
+        {
+            Console.WriteLine("Enter Quizz Name:");
+            quizz.Name = Console.ReadLine();
+        }
+
 
         bool finnished = false;
         while (!finnished)
@@ -249,7 +256,9 @@ internal class Program
             {
                 fs.WriteLine(question.PossibleAnswers[i]);
             }
-            fs.WriteLine("--");
+            fs.Write("--");
         }
     }
 }
+
+
