@@ -12,5 +12,11 @@ namespace Assignment14
         {
             return $"C:\\Users\\ONozadze\\source\\repos\\First-Repository-For-Fun\\Assignment14\\Assignment14\\{fileName}.txt";
         }
+
+        public enum FileOption
+        {
+            CreateNewOrOverWrite = 1,
+            AppendToOldQuestions = 2,  
+        }
     }
 }

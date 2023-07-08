@@ -1,0 +1,15 @@
+Animal Quizz
+which animal is fastest?
+8
+0
+cheetah
+lion
+tiger
+--
+which animal is slower?
+5
+2
+bear
+dog
+turtle
+--

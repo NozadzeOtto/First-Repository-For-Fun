@@ -9,8 +9,16 @@ namespace Assignment14
     public class Questions
     {
         public string Question { get; set; }
-        public Dictionary<int, string> PossibleAnswers { get; set; }
+        public List<string> PossibleAnswers { get; set; }
         public int Score { get; set; }
         public int RealAnswerKey { get; set; }
+
+        public Questions() 
+        { 
+            PossibleAnswers = new List<string>();
+        }
+
     }
+
+    
 }
