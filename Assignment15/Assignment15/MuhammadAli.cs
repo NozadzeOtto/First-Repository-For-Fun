@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Assignment15
 {
-    public class Muhammad
+    public class MuhammadAli
     {
         public static void ThrowHands()
         {
-            Console.WriteLine("12 punches in 2.8 seconds.");
+            Console.WriteLine("Muhammad Ali could throw 12 punches in 2.8 seconds.");
         }
         public static void AliShuffle()
         {

@@ -16,8 +16,8 @@ switch (choosen)
         obj = new MikeTyson();
         type = typeof(MikeTyson); break;
     case 2:
-        obj = new Muhammad();
-        type = typeof(Muhammad); break;
+        obj = new MuhammadAli();
+        type = typeof(MuhammadAli); break;
     default:
         obj = new Boxing();
         type = typeof(Boxing); break;
@@ -41,7 +41,7 @@ var method = methodInfo[choosenIndex];
 object[] parameters = new object[method.GetParameters().Length];
 for (int i = 0; i < method.GetParameters().Length; i++)
 {
-    Console.Write("Input parameter " + method.GetParameters()[i].Name + ": ");
+    Console.Write("Input " + method.GetParameters()[i].Name + ": ");
     parameters[i] = Console.ReadLine();
 }
 
