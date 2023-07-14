@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using Task2;
 
 internal class Program
@@ -7,10 +8,10 @@ internal class Program
     private static void Main(string[] args)
     {
         var fileName = "C:\\Users\\ONozadze\\source\\repos\\First-Repository-For-Fun\\Assignment16\\Task2\\Persons.txt";
+        var result = new List<Person>();
         Contacts contacts = new Contacts();
         var type = typeof(Contacts);
         MethodInfo[] methodInfo = type.GetMethods();
-
 
         string? line;
         using (var fs = new StreamReader(fileName))
@@ -53,34 +54,39 @@ internal class Program
             parameters[i] = Console.ReadLine();
         }
 
-
         dynamic del;
         switch (method.Name)
         {
             case "WithFirstName":
-                del = Delegate.CreateDelegate(typeof(ContactDelegateFirstName), contacts, method);
-                del.Invoke(parameters[0]);
+                del = Delegate.CreateDelegate(typeof(ContactDelegateName), contacts, method);
+                result = del.Invoke(parameters[0]);
                 break;
             case "WithLastName":
-                del = Delegate.CreateDelegate(typeof(ContactDelegateLastName), contacts, method);
-                del.Invoke(parameters[0]);
+                del = Delegate.CreateDelegate(typeof(ContactDelegateName), contacts, method);
+                result = del.Invoke(parameters[0]);
                 break;
             case "WithFullName":
-                del = Delegate.CreateDelegate(typeof(ContactDelegateFullName), contacts, method);
-                del.Invoke(parameters[0]);
+                del = Delegate.CreateDelegate(typeof(ContactDelegateName), contacts, method);
+                result = del.Invoke(parameters[0]);
                 break;
             case "WithAgeRange":
                 del = Delegate.CreateDelegate(typeof(ContactDelegateAge), contacts, method);
-                del.Invoke(int.Parse(parameters[0]), int.Parse(parameters[1]));
+                result = del.Invoke(int.Parse(parameters[0]), int.Parse(parameters[1]));
                 break;
             default:
                 break;
         }
+
+        Console.WriteLine();
+        Console.WriteLine("Search Result:");
+        Console.WriteLine();
+        foreach (Person p in result)
+        {
+            Console.WriteLine($"{p.FirstName}\t{p.LastName}\t{p.Age}");
+        }
     }
 }
 
-public delegate void ContactDelegateFirstName(string firstName);
-public delegate void ContactDelegateLastName(string lastName);
-public delegate void ContactDelegateFullName(string fullName);
-public delegate void ContactDelegateAge(int fAge, int lAge);
+public delegate List<Person> ContactDelegateName(string Name);
+public delegate List<Person> ContactDelegateAge(int fAge, int lAge);
 
