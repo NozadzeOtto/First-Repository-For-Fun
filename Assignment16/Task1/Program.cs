@@ -19,8 +19,6 @@ internal class Program
             }
         }
         var calculator = new Calculator();
-        double x;
-        double y;
         dynamic del;
         choosen = int.Parse(Console.ReadLine());
         var method = methodInfo[choosen - 1];
