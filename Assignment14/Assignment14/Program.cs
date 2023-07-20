@@ -31,7 +31,7 @@ internal class Program
     {
         Console.WriteLine("Enter File Name:");
         string fileName = Console.ReadLine();
-        string path = Helpers.GetPath(fileName);
+        string path = GetPath(fileName);
 
         if (File.Exists(path))
         {
@@ -42,21 +42,21 @@ internal class Program
                 Console.WriteLine("Would you like to delete old questions? Y/N");
                 if (Console.ReadLine().ToLower() == "y")
                 {
-                    AddQuestionsInQuizz(fileName, Helpers.FileOption.CreateNewOrOverWrite);
+                    AddQuestionsInQuizz(fileName, FileMode.Create);
                 }
                 else
                 {
-                    AddQuestionsInQuizz(fileName, Helpers.FileOption.AppendToOldQuestions);
+                    AddQuestionsInQuizz(fileName, FileMode.Append);
                 }
             }
             else
             {
-                AddQuestionsInQuizz(fileName, Helpers.FileOption.AppendToOldQuestions);
+                AddQuestionsInQuizz(fileName, FileMode.Append);
             }
         }
         else
         {
-            AddQuestionsInQuizz(fileName, Helpers.FileOption.CreateNewOrOverWrite);
+            AddQuestionsInQuizz(fileName, FileMode.Create);
         }
 
     }
@@ -66,7 +66,7 @@ internal class Program
     {
         Console.WriteLine("Enter File Name:");
         string fileName = Console.ReadLine();
-        string path = Helpers.GetPath(fileName);
+        string path = GetPath(fileName);
 
         if (File.Exists(path))
         {
@@ -137,10 +137,10 @@ internal class Program
 
 
     // user inputs questions, score, possible answers and correct answer
-    private static void AddQuestionsInQuizz(string fileName,  Helpers.FileOption fileption)
+    private static void AddQuestionsInQuizz(string fileName,  FileMode fileMode)
     {
         Quizz quizz= new Quizz();
-        if((int)fileption!=2)
+        if(fileMode == FileMode.Create) 
         {
             Console.WriteLine("Enter Quizz Name:");
             quizz.Name = Console.ReadLine();
@@ -203,10 +203,10 @@ internal class Program
                 }
             }
         }
-        SaveQuizz(quizz, fileName, fileption);
+        SaveQuizz(quizz, fileName, fileMode);
     }
 
-    private static void SaveQuizz(Quizz quizz, string fileName, Helpers.FileOption fileOption)
+    private static void SaveQuizz(Quizz quizz, string fileName, FileMode fileMode)
     {
         // Save the quizz?
         bool saveChanges = false;
@@ -226,11 +226,9 @@ internal class Program
         // Saving...
         if (saveChanges)
         { 
-            string path = Helpers.GetPath(fileName);
+            string path = GetPath(fileName);
 
-            //CreateNewOrOverWrite = 1,
-            //AppendToOldQuestions = 2,
-            if ((int)fileOption == 2)
+            if (fileMode == FileMode.Append)
             {
                 using var fs = File.AppendText(path);
                 WriteInFile(fs, quizz);
@@ -258,6 +256,11 @@ internal class Program
             }
             fs.Write("--");
         }
+    }
+
+    private static string GetPath(string fileName)
+    {
+        return $"C:\\Users\\ONozadze\\source\\repos\\First-Repository-For-Fun\\Assignment14\\Assignment14\\{fileName}.txt";
     }
 }
 
