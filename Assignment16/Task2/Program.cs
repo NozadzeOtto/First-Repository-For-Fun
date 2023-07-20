@@ -82,7 +82,7 @@ internal class Program
         Console.WriteLine();
         foreach (Person p in result)
         {
-            Console.WriteLine($"{p.FirstName}\t{p.LastName}\t{p.Age}");
+            Console.WriteLine($"{p.FirstName} {p.LastName} {p.Age}");
         }
     }
 }
