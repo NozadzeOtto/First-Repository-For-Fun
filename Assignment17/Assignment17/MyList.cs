@@ -27,12 +27,12 @@ namespace Assignment17
         {
             get
             {
-                if (index < 0 || index > length) { throw new IndexOutOfRangeException(); }
+                if (index < 0 || index > length) { throw new CustomException("Aut of range"); }
                 return List[index];
             }
             set
             {
-                if (index < 0 || index > length) { throw new IndexOutOfRangeException(); }
+                if (index < 0 || index > length) { throw new CustomException("Aut of range"); }
                 List[index] = value;
             }
         }
@@ -51,7 +51,7 @@ namespace Assignment17
         {
             if (collection == null)
             {
-                throw new ArgumentNullException("Collection");
+                throw new CustomException("Null Collection");
             }
 
             int collectionCount = collection.Count();
@@ -123,7 +123,7 @@ namespace Assignment17
         {
             if (condition == null)
             {
-                throw new ArgumentNullException("Invalid Condition");
+                throw new CustomException("Invalid Condition");
             }
             foreach (T item in List)
             {
@@ -140,17 +140,17 @@ namespace Assignment17
             T result = default;
             if (condition == null)
             {
-                throw new ArgumentNullException("Invalid Condition");
+                throw new CustomException("Invalid Condition");
             }
             foreach (T item in List)
             {
                 if (condition(item))
                 {
-                    if(!result.Equals(default(T))) throw new InvalidOperationException("More Than one element found with that confition");
+                    if(!result.Equals(default(T))) throw new CustomException("More Than one element found with that confition");
                     result = item;
                 }
             }
-            if (result.Equals(default(T))) throw new InvalidOperationException("Can't find element with that confition");
+            if (result.Equals(default(T))) throw new CustomException("Can't find element with that confition");
             return result;
         }
 
@@ -159,7 +159,7 @@ namespace Assignment17
             T result = default;
             if (condition == null)
             {
-                throw new ArgumentNullException("Invalid Condition");
+                throw new CustomException("Invalid Condition");
             }
             foreach (T item in List)
             {
@@ -169,6 +169,25 @@ namespace Assignment17
                 }
             }
             return default;
+        }
+
+        public IEnumerable<T> Where(Func<T, Boolean> condition)
+        {
+            if (condition == null) throw new CustomException("Condition null");
+            List<T> result = new List<T>();
+            foreach (T item in List)
+            {
+                if (condition(item))
+                {
+                    result.Add(item);
+                }
+            }
+            return result;
+        }
+
+        public MyEnumerator<T> GetEnumerator()
+        {
+            return new MyEnumerator<T>(this);
         }
 
         private void ResizeList(int size)
