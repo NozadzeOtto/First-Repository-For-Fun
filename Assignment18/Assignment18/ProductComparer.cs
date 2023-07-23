@@ -10,18 +10,19 @@ namespace Assignment18
 {
     public class ProductComparer : IEqualityComparer<Product>
     {
-        public bool Equals(Product? x, Product? y)
+        public bool Equals(Product x, Product y)
         {
-            if(ReferenceEquals(x, y)) return true;
-            if(x is null) return false;
-            if(y is null) return false;
-            if(x.GetType() != y.GetType()) return false;
-            return x.Name == y.Name;
+            if (ReferenceEquals(x, y)) return true;
+            if (ReferenceEquals(x, null)) return false;
+            if (ReferenceEquals(y, null)) return false;
+            if (x.GetType() != y.GetType()) return false;
+            return x.Price == y.Price;
         }
 
         public int GetHashCode(Product obj)
         {
-             return HashCode.Combine(obj.Id, obj.Name, obj.Price);
+            //throw new NotImplementedException();
+            return HashCode.Combine(obj.Id, obj.Name, obj.Price, obj.ShopId);
         }
     }
 }

@@ -12,9 +12,14 @@ var products1 = new List<Product>()
     new Product() { Id = 8, Name = "Zeti", Price = 12, ShopId = 4 },
     new Product() { Id = 9, Name = "Mafini", Price = 20, ShopId = 6 },
     new Product() { Id = 10, Name = "Mawoni", Price = 5, ShopId = 3 },
+    new Product() { Id = 10, Name = "Mawoni", Price = 5, ShopId = 3 },
+    new Product() { Id = 10, Name = "Mawoni", Price = 5, ShopId = 3 },
 };
 var products2 = new List<Product>()
 {
+    new Product() { Id = 11, Name = "Msxali", Price = 12, ShopId = 6 },
+    new Product() { Id = 11, Name = "Msxali", Price = 12, ShopId = 6 },
+    new Product() { Id = 11, Name = "Msxali", Price = 12, ShopId = 6 },
     new Product() { Id = 11, Name = "Msxali", Price = 12, ShopId = 6 },
     new Product() { Id = 12, Name = "puri", Price = 1, ShopId = 1 },
     new Product() { Id = 13, Name = "Dzexvi", Price = 20, ShopId = 2 },
@@ -43,8 +48,14 @@ var shop2 = new List<Shop>()
 //ProducUnionQuery();
 //ProductJoinShopMethod();
 //ProductJoinShopQuery();
+//ProductGrouJoinMethod();
+//ProductGrouJoinQuery();
 //ProductGroupByMethod();
-ProductGroupByQuery();
+//ProductGroupByQuery();
+//ProductGroupByMultipleMethod();
+//ProductGroupByMultipleQuery();
+//ProductGroupAgregateMethod(); 
+//ProductGroupAgregateQuery();
 
 void ProductUnionMethod()
 {
@@ -88,6 +99,48 @@ void ProductJoinShopQuery()
     }
 }
 
+void ProductGrouJoinMethod()
+{
+    var result = shop2.GroupJoin(products2,
+        shop => shop.Id,
+        product => product.ShopId,
+        (shop, shopProducts) => new
+        {
+            Shop = shop,
+            Products = shopProducts.ToList(),
+        });
+
+    foreach (var item in result)
+    {
+        Console.WriteLine(item.Shop.Name);
+        foreach (var product in item.Products)
+        {
+            Console.WriteLine("\t"+ product.Name);
+        }
+    }
+
+}
+void ProductGrouJoinQuery()
+{
+    var result = from shop in shop2
+                 join product in products2
+                 on shop.Id equals product.ShopId into shopProducts
+                 select new
+                 {
+                     Shop = shop,
+                     Product = shopProducts.ToList(),
+                 };
+
+    foreach (var item in result)
+    {
+        Console.WriteLine(item.Shop.Name);
+        foreach (var product in item.Product)
+        {
+            Console.WriteLine("\t" + product.Name);
+        }
+    }
+}
+
 void ProductGroupByMethod()
 {
     var result = products1.GroupBy(x => x.Price);
@@ -121,3 +174,64 @@ void ProductGroupByQuery()
     }
 }
 
+void ProductGroupByMultipleMethod()
+{
+    var result = products1.GroupBy(x => new { x.Price, x.Name });
+
+    foreach (var condit in result)
+    {
+        Console.WriteLine(condit.Key.Price + " and " + condit.Key.Name);
+        foreach (var product in condit)
+        {
+            Console.WriteLine("\t" + product.Name);
+
+        }
+    }
+}
+
+void ProductGroupByMultipleQuery()
+{
+    var result = from product in products2
+                 group product by new { product.Price, product.Name }
+                 into group1
+                 select group1;
+
+    foreach (var condit in result)
+    {
+        Console.WriteLine(condit.Key.Price + " and " + condit.Key.Name);
+        foreach (var product in condit)
+        {
+            Console.WriteLine("\t" + product.Name);
+
+        }
+    }
+}
+
+void ProductGroupAgregateMethod()
+{
+    var result = products1.GroupBy(x => new { x.Price },
+            (key, group) => new
+            {
+                Name = string.Join(", ", group.Select(x=> x.Name)),
+                TotalPrice = group.Sum(product => product.Price),
+            });
+    foreach (var pr in result)
+    {
+        Console.WriteLine(pr.TotalPrice+ " - " + pr.Name);
+    }
+}
+
+void ProductGroupAgregateQuery()
+{
+    var result = from prod in products1 
+                 group prod by new { prod.Price } into group1
+                 select new
+                 {
+                     Name = string.Join(", ", group1.Select(x=> x.Name)),
+                     TotalPrice = group1.Sum(product => product.Price),
+                 };
+    foreach (var pr in result)
+    {
+        Console.WriteLine(pr.TotalPrice + " - " + pr.Name);
+    }
+}
